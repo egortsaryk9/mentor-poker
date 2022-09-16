@@ -1,0 +1,67 @@
+version: "3.3"
+
+services:
+
+  traefik:
+    image: "traefik:v2.8"
+    container_name: "traefik"
+    restart: always
+    command:
+      - "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+      - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
+      - "--certificatesresolvers.pokerresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.pokerresolver.acme.email=egortsaryk@gmail.com"
+      - "--certificatesresolvers.pokerresolver.acme.storage=/letsencrypt/acme.json"
+      - "--serversTransport.forwardingTimeouts.dialTimeout=120s"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "letsencrypt:/letsencrypt"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+
+  web-server:
+    image: egortsaryk9/mentor-poker-web-server:latest
+    container_name: web-server
+    restart: always
+    expose:
+      - "8000"
+    environment:
+      NODE_ENV: production
+      PORT: 8000
+      JWT_SECRET: WWWsdjfuwegSAS947
+      DOG_KEY: 123
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.webserver_http.rule=Host(`poker.server.yahortsaryk.tech`)"
+      - "traefik.http.routers.webserver_http.entrypoints=websecure"
+      - "traefik.http.routers.webserver_http.service=webserver_http"
+      - "traefik.http.routers.webserver_http.tls.certresolver=pokerresolver"
+      - "traefik.http.services.webserver_http.loadbalancer.server.port=8000"
+
+
+  web-client:
+    image: egortsaryk9/mentor-poker-web-client:latest
+    container_name: web-client
+    restart: always
+    expose:
+      - "8080"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.webclient.rule=Host(`poker.yahortsaryk.tech`)"
+      - "traefik.http.routers.webclient.entrypoints=websecure"
+      - "traefik.http.routers.webclient.tls.certresolver=pokerresolver"
+      - "traefik.http.routers.webclient.service=webclient"
+      - "traefik.http.services.webclient.loadbalancer.server.port=8080"
+
+volumes:
+  letsencrypt:
+    external: true
