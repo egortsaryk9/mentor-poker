@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url(https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&family=Luckiest+Guy&family=Roboto:wght@400;500&display=swap);
+
+html {
+  font-size: calc(0.44 * (1.5vh + 1.1vw));
+}
+
+body {
+  margin: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif; */
+  font-family: "Luckiest Guy";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  /* background: red; */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+#root {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+}
+
+.font-balsamiq {
+  font-family: "Balsamiq Sans";
+}
+
+.font-roboto {
+  font-family: "Roboto";
+}
+
+
+.font-playing-card {
+  font-family: "Lora", serif;
+}
+
+.slider {
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+  /* @apply bg-cyan-300 rounded-full h-4 border-4 border-cyan-700; */
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  cursor: pointer; /* Cursor on hover */
+  border-width: 4px;
+  border-opacity: 1;
+  /* @apply bg-white border-4 border-cyan-700 w-7 h-7 rounded-full; */
+}
+
+.slider::-moz-range-thumb {
+  /* @apply bg-white border-0 w-7 h-7; */
+  cursor: pointer; /* Cursor on hover */
+}
+
+input[type=checkbox] {
+  accent-color: @apply bg-cyan-300
+}
+
+
+/* ANIMATIONS */
+
+.animate-fade-in-up {
+  -webkit-animation-duration: 200ms;
+  animation-duration: 200ms;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
+
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 1rem, 0);
+    transform: translate3d(0, 1rem, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 1rem, 0);
+    transform: translate3d(0, 1rem, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* BouncingLoader ////////////////////////////////////// */
+
+.BouncingLoader {
+  display: flex;
+  justify-content: center;
+  /* > div {
+    align-self: end;
+    width: 16px;
+    height: 16px;
+    margin: 0 6px;
+    border-radius: 50%;
+    background-color: #a3a1a1;
+    opacity: 1;
+    animation: bouncing-loader 0.6s infinite alternate;
+    :nth-child(1) {
+      animation-delay: 0.1s;
+    }
+    :nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    :nth-child(3) {
+      animation-delay: 0.1s;
+    }
+  }
+  @keyframes bouncing-loader {
+    to {
+      opacity: 0.1;
+      transform: translateY(-16px);
+    }
+  } */
+}
+
+.BouncingLoader > div {
+  align-self: end;
+  width: 16px;
+  height: 16px;
+  margin: 0 6px;
+  border-radius: 50%;
+  background-color: #a3a1a1;
+  opacity: 1;
+  animation: bouncing-loader 0.6s infinite alternate;
+}
+
+.BouncingLoader > div:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.BouncingLoader > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.BouncingLoader > div:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+.BouncingLoaderText {
+  font-size: 20px;
+}
+
+@keyframes bouncing-loader {
+  to {
+    opacity: 0.1;
+    transform: translateY(-16px);
+  }
+}
+
+/* BouncingLoader ////////////////////////////////////// */
+
+
+.color-dog-bg_green {
+  background-color: #67f987;
+}
+
+.color-dog-bg_red {
+  background-color: #ef0d59;
+}
+
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.close-btn .wrapper { 
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-btn .wrapper .arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.close-btn .wrapper .arrow .line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 6px;
+  border-radius: 2px;
+  /* background: #457b46; */
+  background: #638c4a;
+  transform-origin: center;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.close-btn .wrapper .arrow .line:nth-child(2) {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+.border-text::before {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 60%;
+  right: 100%;
+  width: calc(50% - 16px);
+  height: 0;
+  border-top: 1px solid #ffffff;
+}
+
+.border-text::after {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 60%;
+  left: 100%;
+  width: calc(50% - 16px);
+  height: 0;
+  border-top: 1px solid #ffffff;
+}
+
+.border-text.active::after, .border-text.active::before {
+  width: calc(50%);
+}
+
+.border-arrow::before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 10%;
+  top: 100%;
+  border: 5px solid;
+  border-color: rgb(229, 194, 58) transparent transparent rgb(229, 194, 58);
+}
+
+.hover-check-square:hover {
+  /* color: #606060; */
+  color: #255240;
+}

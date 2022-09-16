@@ -1,0 +1,58 @@
+{
+  "1": {
+    "user_id": 783056234,
+    "room_id": 1,
+    "name": "qwe",
+    "image": "/images/zero.PNG",
+    "bones": 100
+  },
+  "2": {
+    "user_id": 18068069,
+    "room_id": 1,
+    "name": "asd",
+    "image": "/images/game/question.png",
+    "bones": 160
+  },
+  "3": {
+    "user_id": 914397853,
+    "room_id": 1,
+    "name": "zxc",
+    "image": "/images/game/bone.png",
+    "bones": 210
+  },
+  "4": {
+    "user_id": 500612429,
+    "room_id": 1,
+    "name": "rty",
+    "image": "/images/game/reload.png",
+    "bones": 260
+  },
+  "5": {
+    "user_id": 497778783,
+    "room_id": 1,
+    "name": "fgh",
+    "image": "/images/game/help.png",
+    "bones": 310
+  },
+  "6": {
+    "user_id": 106767402,
+    "room_id": 1,
+    "name": "vbn",
+    "image": "/images/zero.PNG",
+    "bones": 360
+  },
+  "7": {
+    "room_id": 2,
+    "user_id": 340,
+    "name": "0x17...7e1e",
+    "image": "/images/zero.PNG",
+    "bones": 100
+  },
+  "999": {
+    "room_id": 1,
+    "user_id": 340,
+    "name": "0x17...7e1e",
+    "image": "/images/zero.PNG",
+    "bones": 100
+  }
+}

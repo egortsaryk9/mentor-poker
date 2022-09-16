@@ -1,0 +1,19 @@
+{
+  "name": "coolpoker",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "devServer": "cd server/ && npm run dev",
+    "devClient": "cd client/ && npm run start",
+    "install_modules": "npm i && cd client/ && npm i && cd ../server && npm i && cd ../",
+    "start": "npm-run-all --parallel devClient devServer"
+  },
+  "main": "index.js",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+  }
+}
